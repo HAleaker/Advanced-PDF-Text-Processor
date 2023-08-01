@@ -281,4 +281,4 @@ POSSIBILITY OF SUCH DAMAGES.
 
         Appendix: How to Apply These Terms to Your New Programs
 
-  If you d
+  If you develop a new program, and
