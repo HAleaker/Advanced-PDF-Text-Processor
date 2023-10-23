@@ -330,3 +330,4 @@ necessary.  Here is a sample; alter the names:
   `Gnomovision' (which makes passes at compilers) written by James Hacker.
 
   <signature of Ty Coon>, 1 April 1989
+  Ty Coon, President of V
