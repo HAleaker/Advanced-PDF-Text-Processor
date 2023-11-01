@@ -30,3 +30,35 @@ soup = BeautifulSoup(content)
 divs = soup.findAll("div", { "class" : "page" })
 
 texts= {}             #stores header and footers
+noOfPages=0
+for div in divs:
+    noOfPages=noOfPages+1
+    inner_text = div.text
+    strings = inner_text.split("\n")
+    for i in range(0,8):  #Considering 1st four non-empty texts of each page (Spaces exists after each text)
+      if(len(strings[i])>1):  #it's a non-empty string
+        #print(strings[i])     #print that non-empty string
+        if(len(texts)==0):    #initial hashmap is empty
+           texts[strings[i]]=1
+           continue
+        f=0                   #flag to check if string found in hashmap
+        for x in texts:
+          if(matcher(x,strings[i])==1): #texts already exist in hashmap
+            texts[x]=texts[x]+1
+            f=1                #setting the flag
+            break
+        if f==0:
+          texts[strings[i]]=1
+
+header_footer=[]
+temp=0
+if noOfPages==1:
+  for x in texts:
+     header_footer.append(x)
+     temp=temp+1
+     if(temp==2):
+       break
+
+elif noOfPages==2:                 #If we have 2 page pdf and 1st page doesn't have header/footer. It'll not work. So we'll paas only 2nd page to algo
+  for x in texts :
+      if(texts[x]==2):             #havent' taken '==1' since do want to take any risk loosing my actual content of pdf
